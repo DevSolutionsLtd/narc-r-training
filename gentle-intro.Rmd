@@ -1,0 +1,249 @@
+---
+title: "A Gentle Introduction to R"
+author: "Victor Ordu"
+date: "6 August 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Outline
+
+* Data
+* Functions
+* The Working Directory
+* The Workspace
+* R Script
+* Resources
+
+***
+
+# Data
+***
+
+Everything about computing has to do with data - R is no exception.
+
+* The user provides input.
+* The input is processed.
+* R gives either gives an output or carries out an action e.g. open a file.
+
+```{r hello}
+# This is a comment. R ignores this line.
+
+# Type in "Hello, world!"
+"Hello, world!"
+```
+
+```{r num}
+42
+```
+
+***
+
+R can perform computations
+```{r}
+18 + 4
+```
+
+```{r subtract}
+22 - 4
+```
+
+```{r}
+18 * 6
+```
+
+```{r}
+108 / 6
+```
+
+***
+
+```{r}
+18 %% 5
+```
+
+```{r}
+3 ^ 2
+```
+
+## Variables
+
+* In order to work effectively with pieces of data, we give them identifiers known as `name`s or `symbol`s.
+* R offers a special operator called the **assignment operator** and represented by the synbol *`<-`*
+* The operator `=` can also be used but it's not recommended.
+
+* The assignment operator is used to connect a value to a name.
+
+So, going by one of the earlier examples
+
+```{r, vars}
+x <- 18
+```
+We now have a piece of data in memory called `x ` that has a value of 18.
+
+***
+
+If one runs `x` in the console, any value it has should be returned as output.
+
+```{r var output}
+x
+```
+
+It's that simple!
+
+* We now have a variable `x` stored in memory.
+* It is called a variable because we can change the value but retain the name.
+
+```{r change var}
+x <- 108
+x
+```
+
+Voila! Our variable `x` has just been assigned a new value.
+
+***
+
+We can add create another variable and use them for computations
+
+```{r}
+y <- 6
+x + y
+```
+
+Okay, let's put the results into a third variable.
+
+```{r}
+z <- x + y
+z
+```
+
+*Quiz*: What happened here?
+
+***
+
+This manipulation of variables-values is essentially what we do in any R session, whether on a small or large scale, so need to understand this concept.
+
+One common trick is to use an existing variable to alter its own value.
+
+```{r}
+x
+x <- x / 12
+x
+```
+
+# Functions
+***
+
+Every thing that happens in R is done with a function.
+
+For example we have a function in R for computing the square root of a number called `sqrt`
+
+```{r}
+x
+sqrt(x)
+```
+
+What is the value of `x` now?
+
+***
+
+R functions are usually represented in the format `<name>` followed by  `<parentheses>` i.e. `()`.
+
+The parentheses are used to "wrap" the function parameters. Note that not all functions have parameters.
+
+The user can also create his own functions
+
+## The Working Directory
+When working in R, you are always within a given working directory. To know the current working directory call the function `getwd`.
+
+```{r wd}
+getwd()
+```
+
+To change the working directory, write the path to the new directory you want to move to. For example
+
+```{r, eval=FALSE}
+setwd("~/Desktop")
+```
+
+To check where you are now, run `getwd()` again.
+
+***
+
+It is strongly recommended that for any given project, you have a unique working directory, hence the introduction of this function.
+
+# The Workspace
+
+***
+
+This is essentially your R workstation and this is where all the data you are working with in any given session resides. To display the contents of the workspace, use the `ls()` function.
+
+```{r}
+ls()
+```
+
+***
+
+To remove something from the Workspace, use the `rm()` function.
+
+```{r}
+rm(z)
+
+```
+
+To remove *everything* in the Workspace supply additional arguments to `rm`. 
+
+* This function has a parameter `list`
+* We will supply the argument that returns everything in the workspace i.e. `ls()`.
+
+```{r}
+rm(list = ls())
+```
+
+# R Scripts
+
+***
+
+* R commands can be saved in a text file called an R script.
+
+* R reads the file line by line from top to bottom.
+
+* Each line is read from right to left.
+
+* The implication of this is that when there is a problem with the code, R stops execution at the line with the syntax issue. Errors on subsequent lines will only be read after it is fixed.
+
+* Similarly, if there is more than one problem on a given line, the right-most is read first and exexution stops at that point. 
+
+* R does not foresee errors beyond the point where execution is stopped
+
+# Code Demo
+
+***
+
+# Resources
+## R Documentation
+* Your R installation comes with a rich set of documentation that can be easily accessed via certain functions.
+* This includes the R Manuals, such as language definitions, general information, data importa/export details, installation tips and even the nuts-and-bolts of the R interpreter.
+* To see the manuals, you can call `help.start()` to open the main Help homepage.
+
+## Help
+* Specific help can be easily obtained for indidual functions, amongst others.
+* For example to see the help of `sqrt()` function, all we need to is to prepend the name of the function with the operator `?`.
+* This will open a function documentation page with details on usage, arguments, return value and perhaps examples.
+
+***
+
+Sometimes, you just want to check the arguments to use
+```{r}
+args(setwd)
+```
+
+Or you just want to see some example(s)
+```{r}
+example("sum")
+```
+
+# Thank you!
