@@ -1,0 +1,187 @@
+---
+title: "Introducing NARC Data Projects"
+author: "Victor Ordu"
+date: "23-24 August 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+## Introduction
+* Earlier sessions ->> equip to **use** R.
+    + Can navigate an R session
+    + Can create simple R objects
+    + Can examine R objects
+    + Can carry out basic object manipulations
+    + Can look for help!
+
+## Problem Statement
+Our findings:
+<ol>
+<li> The data existed in different Microsoft Excel files, some of which had more than one spreadsheet. </li>
+<li> The data in each spreadsheet had different data fields </li>
+<li> The principal data collection instrument was the Guest Form of the ministry. </li>
+<li> The newsletter mailing list was being managed with MailChimp, a popular online mailing list management platform. </li>
+<li> The data were being manually uploaded to MailChimp, specifically the names and email addresses of prospective readers. </li>
+</ol>
+***
+<ol start=6>
+<li> The staff handling the data did not have sufficient knowledge of simple data management practices. </li>
+<li> There is no documented data management policy at the Centre and thus the staff do not have a specific workflow that they employ and as such data entry methods are arbitrary. </li>
+<li> There is no in-house mechanism for monitoring data quality. </li>
+<li> There is no back-up for the data. </li>
+</ol>
+
+## Solution
+The solution for these problems are domiciled in:
+
+1. An R package called _**NARCcontacts**_.
+2. An RStudio project called _**narc-mail-data**_.
+
+Both of them can be found via the DevSolutions GitHub page.
+
+***
+
+**NARCcontacts**
+
+1. Contains functions that specifically address some of the problems identified.
+2. Makes it easy for the staff to run the operations
+3. Provides avenue for improvement and fixing unforeseen issues
+4. The approach used can be reproduced and shared - this is good for learning.
+
+***
+
+**narc-mail-data**
+
+* This project is a folder that contains everything associated with the intervention.
+    + Most notable is the data - original and modified.
+    + Reports
+    + Further development and experimentation i.e. sandbox.
+* Data entry will in the interim be carried out here as well.
+
+# Usage
+## Git
+* Now that we have **git** installed, let's make sure. 
+* Open a shell of your choice
+* At the prompt, run the command `git`
+You should see something like this:
+
+```
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+...
+```
+***
+To collect a copy of the R Studio project **narc-mail-data**:
+
+* open the repository main page (I will show you how!) and copy the URL from the address bar.
+* run this command in the shell
+```
+git clone <full web address>.git
+```
+* Note that you're to `.git` at the end.
+* This will give you the whole project folder.
+
+## R packages
+Now you will install the R package.  
+
+* Because your R installations are relatively new, **do not start the package installation until we are through with the talk**!
+* Write out the package installation code in an R script while we discuss.
+
+***
+
+To use an R package, there are 2 main steps:
+
+1. Download and installation
+2. Attaching and/or loading
+
+* The first brings the package onto your machine
+* The second bring the package into your current R session
+
+***
+
+* The main package repository for R is called the *Comprehensive R Archive Network* (CRAN), owned by the R Foundation for Statistical Computing (see <http://r-project-org)
+
+* Another important (unofficial) repository is GitHub - this is where most development versions of packages are found.
+
+* Yet another is called **Bioconductor**.
+
+Anyone can create packages and host online for others to use.
+
+***
+* To install from CRAN, we use the function, `install.packages()`. You are going to need a package called `devtools` to easily install from GitHub.
+```{r}
+install.packages('devtools')
+```
+
+* To install a package from *GitHub* we use `devtools::install_github()`. To install our *NARCcontacts*, use this code
+```{r}
+devtools::install_github('DevSolutionsLtd/NARCcontacts')
+```
+
+# Project Overview
+## Contact List Harmonisation
+* To harmonise the data that exists in different Excel files
+* The function that does this is `NARCcontacts::harmonise_narc_excel()`.
+* Its arguments are
+    + `dir` - A directory that contains the Excel files to be merged.
+    + `dest` - The folder where the resultant database is to be stored. Defaults to the **data** folder in *narc-mail-data*. 
+    + `quiet` - Whether to display output on the progress of the operations. Defaults to `FALSE`.
+    
+***
+
+* Can be activated by `source('src/harmonise.R')`
+* Others: *Source* button, PowerShell script
+
+Example:
+```{r}
+harmonise_narc_excel("workbooks", "myFolder")
+```
+
+## Data Consolidation
+* Upon merging the files, invariably some of the records were repeated.
+* Many of the duplicated records were inconsistent.
+* `NARCcontacts::consolidate_narc_mail()` fixes this.
+* Fixes are applied interactively.
+* Function receives 1 argument, `db`
+* Currently ends with a warning - to be fixed later.
+* Can be activated in *narc-mail-data* by `source('src/consolidate.R')`
+
+## Data Entry
+* The *narc-mail-data* project also has a script for activating a data entry form that is based on the __DataEntry__ package.
+* To open the form simply type `DataEntry::DataEntry()` or source the script **dataentry.R**. 
+
+## Bonus: Media Management
+* **Purpose**: To find all the media files in a given system.
+* Run (source) the script `locate-msg.R`.
+* The user will be prompted with a dialog to select a root folder to search for media files.
+* An entire drive (e.g. `C:/` on Windows) can be searched this way. If you do this, go and make a cup of coffee!
+* Details of the media files will be stored in a database - useful for later searches.
+
+## Future Work
+See `README`
+
+# Live Demo
+
+# Conclusion
+## Next Steps
+* Git & GitHub Tutorial
+* Basic (project specific) Data Analysis 
+* Basic R Programming
+
+**But from here on everything will be pretty much hands-on!**
+
+## Contact
+Feel free to contact me via email and follow me on Twitter & GitHub  
+
+**Email**: victor@dev-solu.com  
+**Twitter**: [BroVic](https://twitter.com/BroVic)  
+**GitHub**: <https://github.com/BroVic>  

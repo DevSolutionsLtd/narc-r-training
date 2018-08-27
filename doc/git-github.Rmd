@@ -1,0 +1,190 @@
+---
+title: "Git & GitHub"
+subtitle: "Training for Nehemiah Apostolic Resource Centre"
+author: "Victor Ordu"
+date: "27 August 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Git: The Basics
+
+## What is git?
+Git is all about:
+
+* Version control
+* Collaboration 
+* Storage 
+
+It is an extremely useful tool being used by professionals who generate files on computers, particularly those that involve some form of coding.
+
+## Getting started
+* First we have to install Git to our computers from <https://git-scm.com>.
+* Though it’s relatively simple, one may encounter some minor hiccups. Ask for help!
+
+## The 2 Key Aspects of Git	
+* Version Control
+
+* Collaboration
+
+## How to use Git
+* Command Line (recommended!!!)
+* Integrative (with major applications like IDEs)
+* GUI
+
+## Command Line Basic-Basics
+Depending on your OS:
+
+* Windows: Command prompt, Powershell
+* macOS: Terminal (bash)
+* Linux… zsh, csh, bash, etc
+
+To use git you’ll like need to know how to
+
+* Change directory (cd)
+* Check directory contents (dir, ls)
+* Delete a file (del, rm)
+* Copy/move a file (cp)
+* Write to file (echo, cat)
+* Read a file (various commands)
+
+***
+
+You can still use GUI-based folder management (at the beginning) but this is really cumbersome and time-consuming.
+
+## Git in Action
+* Open your command line interface of choice
+* Run git.exe
+* Type and run git
+* Now try git help
+
+* Note that EVERY command run in the utility is preceded by the keyword “git”.
+
+## Create a Git Repository
+* A git repository (“repo”) is a folder that has been initialized to work with the utility.
+
+Let try something out:
+
+* Create and open a blank folder called GitLesson in your favourite GUI e.g. Windows Explorer. (Make sure it is configured to show hidden files/folders.)
+* Open the CLI and navigate to that folder/directory
+* Start Git and make sure its running
+* Run this command: git init
+* Look at your GUI.
+What did you notice?
+
+## A brief explanation…
+Git essentially takes snapshots of files in the repo.  
+There are 2 steps to snapshotting:
+
+* Staging 
+* Committing
+
+`git add`: Staging your changes
+
+`git commit`: Taking that snapshot
+
+`git push`: Sending your files’ new state to a remote location
+
+`git pull`: Collect your own copy of remotely stored changes
+
+***
+
+`git add`  
+
+* The command used for staging the changes made in the file for commit
+* Prepares the stage for the commit
+* Allows you to review which files to include
+
+***
+
+`git commit` 
+
+* With this command, a snapshot of the file in its current state is made
+Has a unique ID – the SHA key
+* Must be accompanied with a message to describe your changes to help
+Other people
+* Your future self
+
+***
+
+`git push`
+
+* The committed changes are sent to a remote server where the repository resides
+* This is usually at GitHub, but now exclusively so.
+* You will need to use password authentication to push the changes.
+* This step is purely optional.
+
+*** 
+ 
+`git pull`  
+Involves 2 operations:
+
+* Fetching
+    + `git fetch` enables you to ‘collect’ changes found in the remote repo
+* Merging 
+    + `git merge` incorporates the changes into your repo (branch)
+
+***
+
+**A Note about .gitignore**
+
+* __*.gitignore*__ is simply a text file that carries the list of stuff you do not want be committed. 
+* Important for utility files that change frequently & whose details add no real value.
+* Also files related to privacy or security.
+
+# Exercise
+***
+* Open Git bash
+* Open a new folder and call it *git-practice*
+* Initialise Git (`git init`) inside this folder.
+* Open Microsoft Word,  type `=lorem()` and hit `ENTER`. Copy the text you see to Clipboard.
+* Type `notepad lorem.txt` in Command Prompt or Powershell. (if Using Mac type `touch lorem` in bash)
+* Paste the text you copied from Word and save the file.
+
+*** 
+
+* Run `git add`
+* Run `git status`. Discuss
+* Run `git commit -m "My first commit"`
+* Run `git status` again. Discuss.
+* Open the file again.
+* Give it any heading in English, then save and close the file
+* Check the status of Git, then stage and commit the file as before. Discuss.
+
+
+# GitHub
+## What is GitHub?
+* It’s a website
+* It’s an open-source repository
+* It’s a social network
+* It’s a collaborative tool
+* It’s a peer-review mechanism
+* It’s a marketing platform
+* It’s a backup system
+* It’s an archive
+
+## How to Start
+* Sign up for a personal account
+* Create your profile
+* ‘Fork’ any repository of interest
+* ‘Follow’ any account of interest
+* Read through the documentation
+
+
+## Conclusion
+* There’s actually a lot more to Git that is better to learn on the fly
+like `branch`, `reset`, `rebase`, `diff`, `log`, `remote`, etc
+* But the ones discussed here are all you need to get started.
+
+## Resources
+* `git help`
+* http://git-scm.com/documentation 
+* http://gitref.org/basic/  - very easy to use site
+* https://www.atlassian.com/git/ - powerful tutorials
+* Of course, GitHub’s help pages
+* Bonus: Git Cheatsheet
+
+# Thanks again!
