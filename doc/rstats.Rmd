@@ -1,0 +1,47 @@
+---
+title: "A First Look At #rstats"
+author: "Victor Ordu"
+date: "29 August 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+##Stats brief
+Types of variables
+
+* Quantitative
+* Qualitative
+
+Levels of measurement
+
+* Nominal
+* Ordinal
+* Interval
+* Ratio
+
+## categorical Data (Factors)
+* Integer values that are mapped to “strings”
+* Used to represent categorical data
+* Each category is called a level
+* One of the most powerful uses of R
+
+## Exercise
+* Make a character vector `churchType` using 3 categories – small, medium, large – for 10 churches only.
+* Make a factor `churchCategory` by calling the function `factor()` on churchType. 
+* Now use `typeof()`, `is.factor`, `is.character`, `is.integer()` to review these 2 objects.
+
+## Grouping data
+* tabulation
+
+## Measures of central tendency
+* Mean
+* Median
+* Mode
+
+## Measures of dispersion
+* Range, IQR
+* Variance, Standard deviation
+
+
